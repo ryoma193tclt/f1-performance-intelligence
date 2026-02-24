@@ -1,0 +1,18 @@
+[project]
+name = "f1-performance-intelligence"
+version = "0.1.0"
+description = "F1 telemetry-based season analytics and prediction system"
+authors = [
+    {name = "Ryoma Ikku"}
+]
+requires-python = ">=3.10"
+
+dependencies = [
+    "fastf1",
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "scipy",
+    "scikit-learn",
+    "pyarrow",
+]

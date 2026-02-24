@@ -1,0 +1,15 @@
+# venv / caches
+venv/
+data/cache/
+
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# OS/editor
+.DS_Store
+.vscode/
