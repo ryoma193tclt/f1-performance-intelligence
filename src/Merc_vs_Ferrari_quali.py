@@ -191,7 +191,7 @@ delta_legend = [
 ]
 
 ax0.legend(handles=delta_legend, loc="lower left")
-plt.savefig("example.png", dpi=300)
+#plt.savefig("example.png", dpi=300)
 plt.show()
 
 
