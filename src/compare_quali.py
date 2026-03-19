@@ -36,18 +36,39 @@ def compute_delta(telemetry1, telemetry2, step=5):
     base_dis = min(telemetry1["Distance"].max(),
                telemetry2["Distance"].max())
     dis = np.arange(0, base_dis, step)
+
     t1 = telemetry1.set_index("Distance")["Time"]
     t1 = t1.dt.total_seconds()
     t1_interp = np.interp(dis,
                           t1.index,
                           t1.values)
+    s1 = telemetry1.set_index("Distance")["Speed"]
+    s1_interp = np.interp(dis, 
+                          s1.index, 
+                          s1.values)
+    th1 = telemetry1.set_index("Distance")["Throttle"]
+    th1_interp = np.interp(dis,
+                           th1.index,
+                           th1.values
+                           )
+    
     t2 = telemetry2.set_index("Distance")["Time"]
     t2 = t2.dt.total_seconds()
     t2_interp = np.interp(dis,
                           t2.index,
                           t2.values)
+    s2 = telemetry2.set_index("Distance")["Speed"]
+    s2_interp = np.interp(dis, 
+                          s1.index, 
+                          s1.values)
+    th2 = telemetry2.set_index("Distance")["Throttle"]
+    th2_interp = np.interp(dis,
+                           th1.index,
+                           th1.values
+                           )
     delta = t2_interp - t1_interp
-    return dis, delta
+    max_speed_delta = s2_interp.max() - s1_interp.max()
+    return dis, delta, max_speed_delta
 
 
 def plot_comparison(event, session, lap1, lap2, tele1, tele2, dis, delta, year):
